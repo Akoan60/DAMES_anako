@@ -1,7 +1,8 @@
 '''
 Anaël Akouété
 Créér le 21/10/2019
-Module Python: jeu de dames
+Module : Python
+Jeu de dames
 '''
 
 from tkinter import *
@@ -27,6 +28,9 @@ class Checkboard():
                 canvas.create_rectangle(x * self.CELL_SIZE, y * self.CELL_SIZE,
                                         x * self.CELL_SIZE + self.CELL_SIZE,
                                         y * self.CELL_SIZE + self.CELL_SIZE, fill=color)
+
+    def clic(self, event):
+        pass
 
     def placePawn(self):
         pass
@@ -71,7 +75,7 @@ d = Checkboard()
 d.drawgrid(can1)
 
 # Création des boutons de controle
-button1 = Button(window1, text='Quit', command=leave)
+button1 = Button(window1, text='Close', command=leave)
 button1.pack(side=BOTTOM)
 button2 = Button(window1, text='Reset', command=lambda: d.clear(can1))
 button2.pack()

@@ -1,7 +1,7 @@
 '''
 Anaël Akouété
 Créér le 21/10/2019
-Module : Python
+Module : Dev Sol Python
 Jeu de dames
 '''
 
@@ -14,6 +14,7 @@ class Checkboard():
 
     def __init__(self, canvas):
         self.canvas = canvas
+        self.pawn = []
 
     def drawgrid(self, canvas):
         for x in range(self.NUMBER_CELL):
@@ -35,9 +36,9 @@ class Checkboard():
         pass
 
     def placePawn(self):
-        for x in range(Checkboard.NUMBER_CELL):
+        for x in range(0, 4):
             for y in range(Checkboard.NUMBER_CELL):
-                pawn = Pawn(self.canvas, x, y, "black")
+                pawn = Pawn(self.canvas, x, y, "black", "white")
 
     def clear(self, canvas):
         # Nettoyage du canevas
@@ -49,20 +50,20 @@ class Checkboard():
 
 
 class Pawn():
-    def __init__(self, canvas, x, y, color):
+    def __init__(self, canvas, x, y, colorIn, colorOut):
         self.canvas = canvas
         self.x = x
         self.y = y
-        self.color = color
+        self.colorIn = colorIn
+        self.colorOut = colorOut
         self.size = 7
         self.coin = self.canvas.create_oval(self.x * Checkboard.CELL_SIZE, self.y * Checkboard.CELL_SIZE,
                                             self.x * Checkboard.CELL_SIZE + Checkboard.CELL_SIZE,
                                             self.y * Checkboard.CELL_SIZE + Checkboard.CELL_SIZE,
-                                            fill = self.color)
+                                            fill = self.colorIn, outline = self.colorOut, width = 2)
 
     def become_queen(self):
         pass
-
 
 class Player():
     def __init__(self, couleur):
@@ -74,7 +75,6 @@ def leave():
                                  'You are about to close the game, are you sure ?')
     if answer:
         window1.quit()
-
 
 # Création du widget principal
 window1 = Tk()
